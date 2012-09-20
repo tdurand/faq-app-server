@@ -12,5 +12,10 @@ public class Application extends Controller {
     public static void index() {
         render();
     }
+    
+    public static void categories() {
+        List<Category> categories = Category.findAll();
+        renderJSON(categories);
+    }
 
 }

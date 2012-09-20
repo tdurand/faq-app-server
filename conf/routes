@@ -14,6 +14,9 @@ GET     /favicon.ico                            404
 # Import Secure routes
 *       /                                       module:secure
 
+# New route to users method
+GET     /categories                             Application.categories
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
