@@ -13,9 +13,11 @@ public class Application extends Controller {
         render();
     }
     
-    public static void categories() {
-        List<Category> categories = Category.findAll();
-        renderJSON(categories);
+    public static void faq(String lang) {
+        if(lang.equals("fr")) {
+            List<Category> categories = Category.findAll();
+            renderJSON(categories);
+        }
     }
 
 }

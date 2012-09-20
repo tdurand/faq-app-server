@@ -13,9 +13,6 @@ import java.util.*;
 @Table(name="entry")
 public class Entry extends Model {
 	
-	@ManyToOne
-	public Category category;
-	
 	public String title_fr;
 	
 	@MaxSize(10000)
