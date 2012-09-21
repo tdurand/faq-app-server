@@ -13,14 +13,16 @@ import java.util.*;
 @Table(name="entry")
 public class Entry extends Model {
 	
-	public String title_fr;
-	
+    @Column(name="title_ent")
+    public String title;
+    
+    @Column(name="desc_ent")
 	@MaxSize(10000)
-    public String desc_fr;
+    public String desc;
 
     @Override
     public String toString() {
-        return title_fr;
+        return title;
     }
 	
 	

@@ -13,17 +13,19 @@ import java.util.*;
 @Table(name="category")
 public class Category extends Model {
 
-	public String title_fr;
+    @Column(name="title_cat")
+	public String title;
 	
+    @Column(name="desc_cat")
 	@MaxSize(10000)
-	public String desc_fr;
+	public String desc;
 	
 	@OneToMany
     public List<Entry> entries;
 	
 	@Override
     public String toString() {
-        return title_fr;
+        return title;
     }
 	
 }
