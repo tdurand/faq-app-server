@@ -16,41 +16,27 @@ public class Application extends Controller {
     public static void faq(String lang) {
         List<Category> categories = Category.findAll();
         
+        renderJSON(categoryJSON(categories,lang));
+    }
+    
+    public static List<CategoryJSON> categoryJSON(List<Category> categories,String lang) {
+        
         List<CategoryJSON> categoriesJSON = new ArrayList<CategoryJSON>();
         
-        if(lang.equals("fr")) {
-            for (Iterator iterator = categories.iterator(); iterator.hasNext();) {
-                Category category = (Category) iterator.next();
-                
-                List<EntryJSON> entriesJSON = new ArrayList<EntryJSON>();
-                
-                for (Iterator iterator2 = category.getEntries().iterator(); iterator2.hasNext();) {
-                    Entry entry = (Entry) iterator2.next();
-                    entriesJSON.add(new EntryJSON(entry.title_fr, entry.desc_fr));
-                }
-                
-                categoriesJSON.add(new CategoryJSON(category.title_fr, category.desc_fr,entriesJSON));
-                
+        for (Iterator iterator = categories.iterator(); iterator.hasNext();) {
+            Category category = (Category) iterator.next();
+            
+            List<EntryJSON> entriesJSON = new ArrayList<EntryJSON>();
+            
+            for (Iterator iterator2 = category.getEntries().iterator(); iterator2.hasNext();) {
+                Entry entry = (Entry) iterator2.next();
+                entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc));
             }
-            renderJSON(categoriesJSON);
-        }
-        else if(lang.equals("en")) {
+            
+            categoriesJSON.add(new CategoryJSON(category.getTitleAndDesc(lang).title, category.getTitleAndDesc(lang).desc,entriesJSON));
             
         }
-        else if(lang.equals("es")) {
-            
-        }
-        else if(lang.equals("de")) {
-            
-        }
-        else if(lang.equals("it")) {
-            
-        }
-        else if(lang.equals("pt")) {
-            
-        }
-        
-        
+        return categoriesJSON;
     }
 
 }
