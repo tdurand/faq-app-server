@@ -6,7 +6,7 @@ import models.Entry;
 
 @With(Secure.class)
 @CRUD.For(Entry.class)
-public class CRUDEntries extends CRUD {
+public class Entries extends CRUD {
     
     
     

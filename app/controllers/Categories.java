@@ -6,7 +6,7 @@ import models.Category;
 
 @With(Secure.class)
 @CRUD.For(Category.class)
-public class CRUDCategories extends CRUD {
+public class Categories extends CRUD {
     
     
     
