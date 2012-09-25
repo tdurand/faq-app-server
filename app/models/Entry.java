@@ -13,6 +13,7 @@ import java.util.*;
 @Table(name="entry")
 public class Entry extends Model {
     
+    @Required
     @ManyToOne
     public Category category;
 	
@@ -42,7 +43,7 @@ public class Entry extends Model {
 
     @Override
     public String toString() {
-        return title_en;
+        return "["+category.title_en+"] "+title_en+" - "+title_fr;
     }
     
     public TitleDesc getTitleAndDesc(String lang) {

@@ -37,13 +37,25 @@ public class Category extends Model {
     @MaxSize(10000)
     public String desc_pt;
 	
-	@OneToMany
+	@OneToMany(cascade={CascadeType.ALL})
     public List<Entry> entries;
 	
 	@Override
     public String toString() {
-        return title_en;
+	    return title_en+" - "+title_fr;
     }
+	
+	public Entry findEntryById(Long id) {
+	    Entry entryFound=null;
+	    for (Iterator iterator = entries.iterator(); iterator.hasNext();) {
+            Entry entry = (Entry) iterator.next();
+            if(entry.id.equals(id)) {
+                entryFound=entry;
+                break;
+            }
+        }
+	    return entryFound;
+	}
 
     public List<Entry> getEntries() {
         return entries;
