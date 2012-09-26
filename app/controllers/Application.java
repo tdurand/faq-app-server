@@ -5,6 +5,8 @@ import play.mvc.*;
 
 import java.util.*;
 
+import com.google.gson.Gson;
+
 import models.*;
 
 public class Application extends Controller {
@@ -16,7 +18,20 @@ public class Application extends Controller {
     public static void faq(String lang) {
         List<Category> categories = Category.findAll();
         
-        renderJSON(categoryJSON(categories,lang));
+        //Render JSONP
+        if (request.params._contains("callback")) {
+
+            Gson gson = new Gson();
+
+            String out = gson.toJson(categoryJSON(categories,lang));
+
+            renderText(request.params.get("callback") + "(" + out + ")");
+
+         } else {
+
+            renderJSON(categoryJSON(categories,lang));
+
+         }
     }
     
     public static List<CategoryJSON> categoryJSON(List<Category> categories,String lang) {
