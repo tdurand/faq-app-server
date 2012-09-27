@@ -45,11 +45,14 @@ public class Application extends Controller {
             
             for (Iterator iterator2 = category.getEntries().iterator(); iterator2.hasNext();) {
                 Entry entry = (Entry) iterator2.next();
-                entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc));
+                if(!entry.getTitleAndDesc(lang).title.equals("")) {
+                    entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc));
+                }
             }
             
-            categoriesJSON.add(new CategoryJSON(category.getTitleAndDesc(lang).title, category.getTitleAndDesc(lang).desc,entriesJSON));
-            
+            if(category.getTitleAndDesc(lang)!=null) {
+                categoriesJSON.add(new CategoryJSON(category.getTitleAndDesc(lang).title, category.getTitleAndDesc(lang).desc,entriesJSON));
+            }
         }
         return categoriesJSON;
     }
