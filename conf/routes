@@ -17,6 +17,9 @@ GET     /favicon.ico                            404
 # New route to users method
 GET     /faq/{lang}                             Application.faq
 
+GET     /categories/{lang}                       Application.categories
+GET     /entries/{idCategory}/{lang}            Application.entries
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
