@@ -18,25 +18,33 @@ public class Entry extends Model {
     public Category category;
 	
     public String title_fr;
-	
+	@MaxSize(value = 100000)
+	@Column(columnDefinition="TEXT")
     public String desc_fr;
 	
 	public String title_en;
-    
+	@MaxSize(value = 100000)
+	@Column(columnDefinition="TEXT")
     public String desc_en;
     
     public String title_es;
-    
+    @MaxSize(value = 100000)
+    @Column(columnDefinition="TEXT")
     public String desc_es;
     
     public String title_it;
-    
+    @MaxSize(value = 100000)
+    @Column(columnDefinition="TEXT")
     public String desc_it;
     
     public String title_de;
+    @MaxSize(value = 100000)
+    @Column(columnDefinition="TEXT")
     public String desc_de;
     
     public String title_pt;
+    @MaxSize(value = 100000)
+    @Column(columnDefinition="TEXT")
     public String desc_pt;
 
     @Override
