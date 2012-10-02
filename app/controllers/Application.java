@@ -92,7 +92,7 @@ public class Application extends Controller {
             for (Iterator iterator2 = category.getEntries().iterator(); iterator2.hasNext();) {
                 Entry entry = (Entry) iterator2.next();
                 if(!entry.getTitleAndDesc(lang).title.equals("")) {
-                    entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc));
+                    entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc,entry.id));
                 }
             }
             
@@ -123,7 +123,7 @@ public class Application extends Controller {
         for (Iterator iterator = entries.iterator(); iterator.hasNext();) {
             Entry entry = (Entry) iterator.next();
             if(!entry.getTitleAndDesc(lang).title.equals("")) {
-                entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc));
+                entriesJSON.add(new EntryJSON(entry.getTitleAndDesc(lang).title, entry.getTitleAndDesc(lang).desc,entry.id));
             }
         }
         return entriesJSON;
