@@ -1,13 +1,8 @@
 package models;
  
 import play.*;
-import play.db.jpa.Model;
  
-import javax.persistence.*;
-
-import java.util.*;
- 
-public class EntryJSON extends Model {
+public class EntryJSON {
 	
     public String title;
     public String desc;
